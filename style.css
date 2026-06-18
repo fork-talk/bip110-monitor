@@ -1,0 +1,249 @@
+:root {
+  --bg: #fafafa;
+  --card-bg: #ffffff;
+  --text: #1a1a1a;
+  --text-muted: #666;
+  --border: #e0e0e0;
+  --accent: #e91e8c;
+  --accent-dim: #f8e0ef;
+  --green: #28a745;
+  --red: #dc3545;
+  --blue: #1565c0;
+  --bar-bg: #e9ecef;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+header h1 {
+  font-size: 1.8em;
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: 0.9em;
+}
+
+.subtitle a {
+  color: var(--blue);
+  text-decoration: none;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.card h2 {
+  font-size: 1.15em;
+  margin-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 8px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.stat-box {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 14px;
+  text-align: center;
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.8em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.stat-value {
+  display: block;
+  font-size: 1.5em;
+  font-weight: 700;
+}
+
+.stat-value.accent { color: var(--accent); }
+.stat-value.green { color: var(--green); }
+.stat-value.blue { color: var(--blue); }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+th {
+  font-size: 0.8em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+td:nth-child(2), td:nth-child(3), th:nth-child(2), th:nth-child(3) {
+  text-align: right;
+}
+
+.bar-cell {
+  width: 40%;
+}
+
+.mini-bar {
+  background: var(--bar-bg);
+  border-radius: 3px;
+  height: 8px;
+  overflow: hidden;
+}
+
+.mini-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  background: var(--blue);
+  transition: width 0.5s ease;
+}
+
+.bar-container {
+  background: var(--bar-bg);
+  border-radius: 6px;
+  height: 32px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 6px;
+  transition: width 0.5s ease;
+}
+
+#bip110-bar .bar-fill { background: var(--accent); }
+#opreturn-bar .bar-fill { background: var(--blue); }
+
+.bar-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85em;
+  color: var(--text-muted);
+}
+
+.block-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  margin-bottom: 12px;
+}
+
+.block {
+  width: 18px;
+  height: 18px;
+  border-radius: 3px;
+  cursor: default;
+  position: relative;
+}
+
+.block.no-signal { background: var(--bar-bg); }
+.block.signal { background: var(--accent); }
+
+.block:hover::after {
+  content: attr(title);
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--text);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75em;
+  white-space: nowrap;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.block-stats {
+  font-size: 0.9em;
+  color: var(--text-muted);
+}
+
+.note {
+  font-size: 0.85em;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.loading {
+  opacity: 0.5;
+}
+
+.error {
+  color: var(--red);
+  font-size: 0.9em;
+}
+
+footer {
+  text-align: center;
+  padding: 20px 0;
+  font-size: 0.85em;
+  color: var(--text-muted);
+}
+
+footer a {
+  color: var(--blue);
+  text-decoration: none;
+}
+
+#sources ul {
+  list-style: none;
+  padding: 0;
+}
+
+#sources li {
+  padding: 4px 0;
+  font-size: 0.9em;
+}
+
+#sources a {
+  color: var(--blue);
+  text-decoration: none;
+}
+
+@media (max-width: 600px) {
+  .container { padding: 12px; }
+  header h1 { font-size: 1.4em; }
+  .grid { grid-template-columns: repeat(2, 1fr); }
+  .stat-value { font-size: 1.2em; }
+  .block { width: 14px; height: 14px; }
+}

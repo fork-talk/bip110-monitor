@@ -1,0 +1,12 @@
+{
+  "name": "bip110-monitor",
+  "version": "1.0.0",
+  "description": "BIP-110 adoption dashboard - node signaling and block version bits",
+  "type": "module",
+  "scripts": {
+    "monitor": "node cli.mjs",
+    "nodes": "node cli.mjs --nodes-only",
+    "blocks": "node cli.mjs --blocks-only"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BIP-110 Adoption Monitor</title>
+  <meta name="description" content="Live BIP-110 adoption dashboard - node signaling, block version bits, and network distribution">
+  <meta property="og:title" content="BIP-110 Adoption Monitor">
+  <meta property="og:description" content="Live dashboard tracking BIP-110 node adoption and block signaling across the Bitcoin network">
+  <meta property="og:url" content="https://fork-talk.github.io/bip110-monitor/">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>BIP-110 Adoption Monitor</h1>
+      <p class="subtitle">Live data from <a href="https://btcnodes.io">btcnodes.io</a> and <a href="https://mempool.space">mempool.space</a></p>
+    </header>
+
+    <section id="summary" class="card">
+      <h2>Network Summary</h2>
+      <div class="grid" id="summary-grid">
+        <div class="stat-box" id="stat-total">
+          <span class="stat-label">Total Nodes</span>
+          <span class="stat-value loading">...</span>
+        </div>
+        <div class="stat-box" id="stat-knots">
+          <span class="stat-label">Knots</span>
+          <span class="stat-value loading">...</span>
+        </div>
+        <div class="stat-box" id="stat-bip110">
+          <span class="stat-label">BIP-110 Nodes</span>
+          <span class="stat-value loading">...</span>
+        </div>
+        <div class="stat-box" id="stat-legacy">
+          <span class="stat-label">Legacy OP_RETURN</span>
+          <span class="stat-value loading">...</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="implementations" class="card">
+      <h2>Node Implementations</h2>
+      <table id="impl-table">
+        <thead>
+          <tr><th>Implementation</th><th>Nodes</th><th>%</th><th></th></tr>
+        </thead>
+        <tbody id="impl-body">
+          <tr><td colspan="4" class="loading">Loading...</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="bip110-section" class="card">
+      <h2>BIP-110 Signaling</h2>
+      <div class="bar-container" id="bip110-bar">
+        <div class="bar-fill loading" style="width: 0%"></div>
+      </div>
+      <div class="bar-labels">
+        <span id="bip110-yes">... signaling</span>
+        <span id="bip110-no">... not signaling</span>
+      </div>
+    </section>
+
+    <section id="opreturn-section" class="card">
+      <h2>OP_RETURN Policy</h2>
+      <div class="bar-container" id="opreturn-bar">
+        <div class="bar-fill loading" style="width: 0%"></div>
+      </div>
+      <div class="bar-labels">
+        <span id="opreturn-legacy">... legacy (83-byte limit)</span>
+        <span id="opreturn-new">... new policy (100KB)</span>
+      </div>
+    </section>
+
+    <section id="blocks-section" class="card">
+      <h2>Recent Block Signaling (Bit 4)</h2>
+      <p class="note">Version bit 4 indicates BIP-110 support. Activation requires 55% (1,109/2,016) in a retarget period.</p>
+      <div id="block-grid" class="block-grid">
+        <span class="loading">Loading blocks...</span>
+      </div>
+      <div id="block-stats" class="block-stats"></div>
+    </section>
+
+    <section id="timeline-section" class="card">
+      <h2>Timeline</h2>
+      <table id="timeline-table">
+        <thead>
+          <tr><th>Milestone</th><th>Block Height</th><th>Est. Date</th></tr>
+        </thead>
+        <tbody id="timeline-body"></tbody>
+      </table>
+      <p class="note" id="timeline-note"></p>
+    </section>
+
+    <section id="retarget-section" class="card">
+      <h2>Current Retarget Period</h2>
+      <div id="retarget-info" class="loading">Loading...</div>
+    </section>
+
+    <section id="sources" class="card">
+      <h2>Data Sources</h2>
+      <ul>
+        <li><a href="https://btcnodes.io">btcnodes.io</a> - Node crawler with implementation breakdown and BIP-110 tracking</li>
+        <li><a href="https://mempool.space">mempool.space</a> - Block explorer API for version bit signaling</li>
+        <li><a href="https://bitdis.org">bitdis.org</a> - Node distribution dashboard</li>
+        <li><a href="https://coin.dance/nodes">coin.dance/nodes</a> - Node counts by implementation</li>
+        <li><a href="https://bitnod.es">bitnod.es</a> - BitMEX Research node crawler</li>
+        <li><a href="https://bip110.org">bip110.org</a> - BIP-110 community hub</li>
+      </ul>
+    </section>
+
+    <footer>
+      <p>
+        <a href="https://fork-talk.github.io/faq/">Fork Talk FAQ</a> -
+        <a href="https://github.com/fork-talk/bip110-monitor">Source</a> -
+        Data refreshes on page load
+      </p>
+      <p id="last-updated"></p>
+    </footer>
+  </div>
+
+  <script type="module" src="js/app.mjs"></script>
+</body>
+</html>
