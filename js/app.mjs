@@ -10,6 +10,7 @@ import {
   renderRetarget,
   renderError,
   renderLastUpdated,
+  renderSnapshotNotice,
 } from './render.mjs';
 
 const BIT4 = 1 << 4;
@@ -21,6 +22,9 @@ async function loadNodeData() {
     renderImplementations(data);
     renderBip110Bar(data);
     renderOpReturnBar(data);
+    if (data.fromSnapshot) {
+      renderSnapshotNotice('summary', data.snapshot);
+    }
   } catch (err) {
     renderError('summary', 'Failed to load node data: ' + err.message);
   }
@@ -28,20 +32,36 @@ async function loadNodeData() {
 
 async function loadBlockData() {
   try {
-    const tipHeight = await fetchTipHeight();
-    const blocks = await fetchBlockRange(150);
+    let tipHeight;
+    try {
+      tipHeight = await fetchTipHeight();
+    } catch {
+      tipHeight = null;
+    }
+
+    const { blocks, fromSnapshot } = await fetchBlockRange(150);
+
+    if (!tipHeight && blocks.length) {
+      tipHeight = blocks[0].height;
+    }
 
     renderBlocks(blocks);
 
-    const timeline = getTimeline(tipHeight);
-    renderTimeline(timeline, tipHeight);
+    if (tipHeight) {
+      const timeline = getTimeline(tipHeight);
+      renderTimeline(timeline, tipHeight);
 
-    const retarget = getRetargetInfo(tipHeight);
-    const signalingInPeriod = blocks
-      .filter(b => b.height >= retarget.periodStart && b.height <= retarget.periodEnd)
-      .filter(b => (b.version & BIT4) !== 0)
-      .length;
-    renderRetarget(retarget, signalingInPeriod);
+      const retarget = getRetargetInfo(tipHeight);
+      const signalingInPeriod = blocks
+        .filter(b => b.height >= retarget.periodStart && b.height <= retarget.periodEnd)
+        .filter(b => (b.version & BIT4) !== 0)
+        .length;
+      renderRetarget(retarget, signalingInPeriod);
+    }
+
+    if (fromSnapshot) {
+      renderSnapshotNotice('blocks-section');
+    }
   } catch (err) {
     renderError('blocks-section', 'Failed to load block data: ' + err.message);
   }

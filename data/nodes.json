@@ -1,0 +1,888 @@
+{
+  "total_nodes": 25160,
+  "snapshot": 1781774113,
+  "software_distribution": {
+    "total_nodes": 25160,
+    "categories": {
+      "bitcoin_core": 19381,
+      "core_v31": 3991,
+      "core_v30_plus": 6839,
+      "core_recent_all": 10347,
+      "knots_all": 5672,
+      "knots_v29_1_plus": 5312,
+      "knots_v29_2": 730,
+      "core_v29_3": 1656,
+      "knots_v29_3": 4349,
+      "bip110_signaling": 3917,
+      "core_v29_2": 1171,
+      "core_v30_2": 1655,
+      "core_v30": 1091,
+      "knots_v28_1": 340,
+      "libre_all": 35,
+      "other_all": 34,
+      "core_v30_1": 30,
+      "btcd_all": 21,
+      "core_v28_4": 21,
+      "bitcore_all": 9,
+      "statoshi_all": 2,
+      "unlimited_all": 2,
+      "bcoin_all": 1,
+      "uasf_all": 3,
+      "core_latest_all": 7323,
+      "uncapped_data": 6874,
+      "rest_of_nodes_relay": 18286,
+      "core_legacy_all": 12542,
+      "knots_other": 253,
+      "others_legacy": 72,
+      "non_bip110": 21243
+    },
+    "widgets": [
+      {
+        "id": "latest_versions",
+        "type": "battle",
+        "title": "Trending",
+        "subtitle": "Latest point releases head-to-head. Which implementation is gaining nodes faster?",
+        "stat_label": "Trending",
+        "order": 0.5,
+        "participants": [
+          {
+            "id": "core_v31",
+            "label": "Core",
+            "name": "Core",
+            "subtitle": "Bitcoin Core 31.0",
+            "nodes": 3991,
+            "count": 3991,
+            "color": "#11120f",
+            "percent": 47.85,
+            "percentage": "47.85"
+          },
+          {
+            "id": "knots_v29_3",
+            "label": "Knots",
+            "name": "Knots",
+            "subtitle": "Bitcoin Knots 29.3",
+            "nodes": 4349,
+            "count": 4349,
+            "color": "#28a745",
+            "percent": 52.15,
+            "percentage": "52.15"
+          }
+        ],
+        "total_nodes": 8340
+      },
+      {
+        "id": "recent_releases",
+        "type": "battle",
+        "title": "Recent releases",
+        "subtitle": "Combined adoption of all versions released since Q4 2024.",
+        "stat_label": "Recent releases",
+        "order": 1,
+        "participants": [
+          {
+            "id": "core_recent_all",
+            "label": "Core",
+            "name": "Core",
+            "subtitle": "Bitcoin Core 28.4, 29.1+, 30+",
+            "nodes": 10347,
+            "count": 10347,
+            "color": "#11120f",
+            "percent": 66.08,
+            "percentage": "66.08"
+          },
+          {
+            "id": "knots_v29_1_plus",
+            "label": "Knots",
+            "name": "Knots",
+            "subtitle": "Bitcoin Knots 29.1, 29.2, 29.3",
+            "nodes": 5312,
+            "count": 5312,
+            "color": "#28a745",
+            "percent": 33.92,
+            "percentage": "33.92"
+          }
+        ],
+        "total_nodes": 15659
+      },
+      {
+        "id": "opreturn_policy",
+        "type": "battle",
+        "title": "OP_RETURN Policy",
+        "subtitle": "Core 30+ raised OP_RETURN to 100KB and allows multiple outputs. All prior versions enforce the 83-byte limit.",
+        "stat_label": "OP_RETURN policy",
+        "order": 2,
+        "participants": [
+          {
+            "id": "uncapped_data",
+            "label": "New policy",
+            "name": "New policy",
+            "subtitle": "Core 30+ / Libre Relay",
+            "nodes": 6874,
+            "count": 6874,
+            "color": "#11120f",
+            "percent": 27.32,
+            "percentage": "27.32"
+          },
+          {
+            "id": "rest_of_nodes_relay",
+            "label": "Legacy",
+            "name": "Legacy",
+            "subtitle": "Core <=29.x / Knots / Others",
+            "nodes": 18286,
+            "count": 18286,
+            "color": "#1565c0",
+            "percent": 72.68,
+            "percentage": "72.68"
+          }
+        ],
+        "total_nodes": 25160
+      },
+      {
+        "id": "opreturn_breakdown",
+        "type": "donut",
+        "title": "OP_RETURN Policy",
+        "subtitle": "All versions disaggregated by OP_RETURN relay policy.",
+        "order": 2.5,
+        "participants": [
+          {
+            "id": "core_v31",
+            "label": "Core 31.0",
+            "name": "Core 31.0",
+            "subtitle": "",
+            "nodes": 3991,
+            "count": 3991,
+            "color": "#11120f",
+            "percent": 15.91,
+            "percentage": "15.91"
+          },
+          {
+            "id": "core_v30",
+            "label": "Core 30.0",
+            "name": "Core 30.0",
+            "subtitle": "",
+            "nodes": 1091,
+            "count": 1091,
+            "color": "#11120f",
+            "percent": 4.35,
+            "percentage": "4.35"
+          },
+          {
+            "id": "core_v30_2",
+            "label": "Core 30.2",
+            "name": "Core 30.2",
+            "subtitle": "",
+            "nodes": 1655,
+            "count": 1655,
+            "color": "#11120f",
+            "percent": 6.6,
+            "percentage": "6.60"
+          },
+          {
+            "id": "core_v30_1",
+            "label": "Core 30.1",
+            "name": "Core 30.1",
+            "subtitle": "",
+            "nodes": 30,
+            "count": 30,
+            "color": "#11120f",
+            "percent": 0.12,
+            "percentage": "0.12"
+          },
+          {
+            "id": "libre_all",
+            "label": "Libre Relay",
+            "name": "Libre Relay",
+            "subtitle": "",
+            "nodes": 35,
+            "count": 35,
+            "color": "#757575",
+            "percent": 0.14,
+            "percentage": "0.14"
+          },
+          {
+            "id": "core_legacy_all",
+            "label": "Core <=29.x",
+            "name": "Core <=29.x",
+            "subtitle": "",
+            "nodes": 12542,
+            "count": 12542,
+            "color": "#546e7a",
+            "percent": 49.99,
+            "percentage": "49.99"
+          },
+          {
+            "id": "knots_v29_3",
+            "label": "Knots 29.3",
+            "name": "Knots 29.3",
+            "subtitle": "",
+            "nodes": 4349,
+            "count": 4349,
+            "color": "#1976d2",
+            "percent": 17.33,
+            "percentage": "17.33"
+          },
+          {
+            "id": "knots_v29_2",
+            "label": "Knots 29.2",
+            "name": "Knots 29.2",
+            "subtitle": "",
+            "nodes": 730,
+            "count": 730,
+            "color": "#1976d2",
+            "percent": 2.91,
+            "percentage": "2.91"
+          },
+          {
+            "id": "knots_v28_1",
+            "label": "Knots 28.1",
+            "name": "Knots 28.1",
+            "subtitle": "",
+            "nodes": 340,
+            "count": 340,
+            "color": "#1976d2",
+            "percent": 1.36,
+            "percentage": "1.36"
+          },
+          {
+            "id": "knots_other",
+            "label": "Knots other",
+            "name": "Knots other",
+            "subtitle": "",
+            "nodes": 253,
+            "count": 253,
+            "color": "#1976d2",
+            "percent": 1.01,
+            "percentage": "1.01"
+          },
+          {
+            "id": "others_legacy",
+            "label": "Others",
+            "name": "Others",
+            "subtitle": "",
+            "nodes": 72,
+            "count": 72,
+            "color": "#90caf9",
+            "percent": 0.29,
+            "percentage": "0.29"
+          }
+        ],
+        "total_nodes": 25088
+      },
+      {
+        "id": "bip110_nodes",
+        "type": "battle",
+        "title": "BIP-110 Node Signaling",
+        "subtitle": "Nodes enforcing BIP-110, a temporary soft fork to restrict arbitrary data in blocks.",
+        "stat_label": "BIP-110 Signal",
+        "order": 2.8,
+        "participants": [
+          {
+            "id": "bip110_signaling",
+            "label": "Yes",
+            "name": "Yes",
+            "subtitle": "NODE_REDUCED_DATA / BIP-110 user agent",
+            "nodes": 3917,
+            "count": 3917,
+            "color": "#e91e8c",
+            "href": "https://bip110.org/",
+            "percent": 15.57,
+            "percentage": "15.57"
+          },
+          {
+            "id": "non_bip110",
+            "label": "No",
+            "name": "No",
+            "subtitle": "No BIP-110 node signal",
+            "nodes": 21243,
+            "count": 21243,
+            "color": "#11120f",
+            "percent": 84.43,
+            "percentage": "84.43"
+          }
+        ],
+        "total_nodes": 25160
+      },
+      {
+        "id": "distributions",
+        "type": "donut",
+        "title": "Distribution Share",
+        "subtitle": "Market share of every known Bitcoin node implementation.",
+        "order": 3,
+        "participants": [
+          {
+            "id": "bitcoin_core",
+            "label": "Bitcoin Core",
+            "name": "Bitcoin Core",
+            "subtitle": "",
+            "nodes": 19381,
+            "count": 19381,
+            "color": "#11120f",
+            "percent": 77.03,
+            "percentage": "77.03"
+          },
+          {
+            "id": "knots_all",
+            "label": "Bitcoin Knots",
+            "name": "Bitcoin Knots",
+            "subtitle": "",
+            "nodes": 5672,
+            "count": 5672,
+            "color": "#28a745",
+            "percent": 22.54,
+            "percentage": "22.54"
+          },
+          {
+            "id": "libre_all",
+            "label": "Libre Relay",
+            "name": "Libre Relay",
+            "subtitle": "",
+            "nodes": 35,
+            "count": 35,
+            "color": "#757575",
+            "percent": 0.14,
+            "percentage": "0.14"
+          },
+          {
+            "id": "bcoin_all",
+            "label": "bcoin",
+            "name": "bcoin",
+            "subtitle": "",
+            "nodes": 1,
+            "count": 1,
+            "color": "#90a4ae",
+            "percent": 0,
+            "percentage": "0.00"
+          },
+          {
+            "id": "btcd_all",
+            "label": "btcd",
+            "name": "btcd",
+            "subtitle": "",
+            "nodes": 21,
+            "count": 21,
+            "color": "#78909c",
+            "percent": 0.08,
+            "percentage": "0.08"
+          },
+          {
+            "id": "unlimited_all",
+            "label": "Bitcoin Unlimited",
+            "name": "Bitcoin Unlimited",
+            "subtitle": "",
+            "nodes": 2,
+            "count": 2,
+            "color": "#607d8b",
+            "percent": 0.01,
+            "percentage": "0.01"
+          },
+          {
+            "id": "bitcore_all",
+            "label": "Bitcore",
+            "name": "Bitcore",
+            "subtitle": "",
+            "nodes": 9,
+            "count": 9,
+            "color": "#9e9e9e",
+            "percent": 0.04,
+            "percentage": "0.04"
+          },
+          {
+            "id": "uasf_all",
+            "label": "Bitcoin UASF",
+            "name": "Bitcoin UASF",
+            "subtitle": "",
+            "nodes": 3,
+            "count": 3,
+            "color": "#8d6e63",
+            "percent": 0.01,
+            "percentage": "0.01"
+          },
+          {
+            "id": "statoshi_all",
+            "label": "Statoshi",
+            "name": "Statoshi",
+            "subtitle": "",
+            "nodes": 2,
+            "count": 2,
+            "color": "#a1887f",
+            "percent": 0.01,
+            "percentage": "0.01"
+          },
+          {
+            "id": "other_all",
+            "label": "Other",
+            "name": "Other",
+            "subtitle": "",
+            "nodes": 34,
+            "count": 34,
+            "color": "#cfd8dc",
+            "percent": 0.14,
+            "percentage": "0.14"
+          }
+        ],
+        "total_nodes": 25160
+      }
+    ],
+    "implementations": [
+      {
+        "label": "Bitcoin Core",
+        "nodes": 19381,
+        "percent": 77.03,
+        "key": "bitcoin-core"
+      },
+      {
+        "label": "Bitcoin Knots",
+        "nodes": 5672,
+        "percent": 22.54,
+        "key": "bitcoin-knots"
+      },
+      {
+        "label": "Libre Relay",
+        "nodes": 35,
+        "percent": 0.14,
+        "key": "libre-relay"
+      },
+      {
+        "label": "Other",
+        "nodes": 34,
+        "percent": 0.14,
+        "key": "other"
+      },
+      {
+        "label": "btcd",
+        "nodes": 21,
+        "percent": 0.08,
+        "key": "btcd"
+      },
+      {
+        "label": "Bitcore",
+        "nodes": 9,
+        "percent": 0.04,
+        "key": "bitcore"
+      },
+      {
+        "label": "Bitcoin UASF",
+        "nodes": 3,
+        "percent": 0.01,
+        "key": "bitcoin-uasf"
+      },
+      {
+        "label": "Statoshi",
+        "nodes": 2,
+        "percent": 0.01,
+        "key": "statoshi"
+      },
+      {
+        "label": "Bitcoin Unlimited",
+        "nodes": 2,
+        "percent": 0.01,
+        "key": "bitcoin-unlimited"
+      },
+      {
+        "label": "bcoin",
+        "nodes": 1,
+        "percent": 0,
+        "key": "bcoin"
+      }
+    ],
+    "top_implementation": {
+      "label": "Bitcoin Core",
+      "nodes": 19381,
+      "percent": 77.03,
+      "key": "bitcoin-core"
+    },
+    "trending": [
+      {
+        "id": "core_v31",
+        "label": "Core",
+        "name": "Core",
+        "subtitle": "Bitcoin Core 31.0",
+        "nodes": 3991,
+        "count": 3991,
+        "color": "#11120f",
+        "percent": 47.85,
+        "percentage": "47.85"
+      },
+      {
+        "id": "knots_v29_3",
+        "label": "Knots",
+        "name": "Knots",
+        "subtitle": "Bitcoin Knots 29.3",
+        "nodes": 4349,
+        "count": 4349,
+        "color": "#28a745",
+        "percent": 52.15,
+        "percentage": "52.15"
+      }
+    ],
+    "recent_releases": [
+      {
+        "id": "core_recent_all",
+        "label": "Core",
+        "name": "Core",
+        "subtitle": "Bitcoin Core 28.4, 29.1+, 30+",
+        "nodes": 10347,
+        "count": 10347,
+        "color": "#11120f",
+        "percent": 66.08,
+        "percentage": "66.08"
+      },
+      {
+        "id": "knots_v29_1_plus",
+        "label": "Knots",
+        "name": "Knots",
+        "subtitle": "Bitcoin Knots 29.1, 29.2, 29.3",
+        "nodes": 5312,
+        "count": 5312,
+        "color": "#28a745",
+        "percent": 33.92,
+        "percentage": "33.92"
+      }
+    ],
+    "op_return_policy": [
+      {
+        "id": "uncapped_data",
+        "label": "New policy",
+        "name": "New policy",
+        "subtitle": "Core 30+ / Libre Relay",
+        "nodes": 6874,
+        "count": 6874,
+        "color": "#11120f",
+        "percent": 27.32,
+        "percentage": "27.32"
+      },
+      {
+        "id": "rest_of_nodes_relay",
+        "label": "Legacy",
+        "name": "Legacy",
+        "subtitle": "Core <=29.x / Knots / Others",
+        "nodes": 18286,
+        "count": 18286,
+        "color": "#1565c0",
+        "percent": 72.68,
+        "percentage": "72.68"
+      }
+    ],
+    "op_return_breakdown": [
+      {
+        "id": "core_v31",
+        "label": "Core 31.0",
+        "name": "Core 31.0",
+        "subtitle": "",
+        "nodes": 3991,
+        "count": 3991,
+        "color": "#11120f",
+        "percent": 15.91,
+        "percentage": "15.91"
+      },
+      {
+        "id": "core_v30",
+        "label": "Core 30.0",
+        "name": "Core 30.0",
+        "subtitle": "",
+        "nodes": 1091,
+        "count": 1091,
+        "color": "#11120f",
+        "percent": 4.35,
+        "percentage": "4.35"
+      },
+      {
+        "id": "core_v30_2",
+        "label": "Core 30.2",
+        "name": "Core 30.2",
+        "subtitle": "",
+        "nodes": 1655,
+        "count": 1655,
+        "color": "#11120f",
+        "percent": 6.6,
+        "percentage": "6.60"
+      },
+      {
+        "id": "core_v30_1",
+        "label": "Core 30.1",
+        "name": "Core 30.1",
+        "subtitle": "",
+        "nodes": 30,
+        "count": 30,
+        "color": "#11120f",
+        "percent": 0.12,
+        "percentage": "0.12"
+      },
+      {
+        "id": "libre_all",
+        "label": "Libre Relay",
+        "name": "Libre Relay",
+        "subtitle": "",
+        "nodes": 35,
+        "count": 35,
+        "color": "#757575",
+        "percent": 0.14,
+        "percentage": "0.14"
+      },
+      {
+        "id": "core_legacy_all",
+        "label": "Core <=29.x",
+        "name": "Core <=29.x",
+        "subtitle": "",
+        "nodes": 12542,
+        "count": 12542,
+        "color": "#546e7a",
+        "percent": 49.99,
+        "percentage": "49.99"
+      },
+      {
+        "id": "knots_v29_3",
+        "label": "Knots 29.3",
+        "name": "Knots 29.3",
+        "subtitle": "",
+        "nodes": 4349,
+        "count": 4349,
+        "color": "#1976d2",
+        "percent": 17.33,
+        "percentage": "17.33"
+      },
+      {
+        "id": "knots_v29_2",
+        "label": "Knots 29.2",
+        "name": "Knots 29.2",
+        "subtitle": "",
+        "nodes": 730,
+        "count": 730,
+        "color": "#1976d2",
+        "percent": 2.91,
+        "percentage": "2.91"
+      },
+      {
+        "id": "knots_v28_1",
+        "label": "Knots 28.1",
+        "name": "Knots 28.1",
+        "subtitle": "",
+        "nodes": 340,
+        "count": 340,
+        "color": "#1976d2",
+        "percent": 1.36,
+        "percentage": "1.36"
+      },
+      {
+        "id": "knots_other",
+        "label": "Knots other",
+        "name": "Knots other",
+        "subtitle": "",
+        "nodes": 253,
+        "count": 253,
+        "color": "#1976d2",
+        "percent": 1.01,
+        "percentage": "1.01"
+      },
+      {
+        "id": "others_legacy",
+        "label": "Others",
+        "name": "Others",
+        "subtitle": "",
+        "nodes": 72,
+        "count": 72,
+        "color": "#90caf9",
+        "percent": 0.29,
+        "percentage": "0.29"
+      }
+    ],
+    "bip110_signal": [
+      {
+        "id": "bip110_signaling",
+        "label": "Yes",
+        "name": "Yes",
+        "subtitle": "NODE_REDUCED_DATA / BIP-110 user agent",
+        "nodes": 3917,
+        "count": 3917,
+        "color": "#e91e8c",
+        "href": "https://bip110.org/",
+        "percent": 15.57,
+        "percentage": "15.57"
+      },
+      {
+        "id": "non_bip110",
+        "label": "No",
+        "name": "No",
+        "subtitle": "No BIP-110 node signal",
+        "nodes": 21243,
+        "count": 21243,
+        "color": "#11120f",
+        "percent": 84.43,
+        "percentage": "84.43"
+      }
+    ],
+    "distribution_share": [
+      {
+        "id": "bitcoin_core",
+        "label": "Bitcoin Core",
+        "name": "Bitcoin Core",
+        "subtitle": "",
+        "nodes": 19381,
+        "count": 19381,
+        "color": "#11120f",
+        "percent": 77.03,
+        "percentage": "77.03"
+      },
+      {
+        "id": "knots_all",
+        "label": "Bitcoin Knots",
+        "name": "Bitcoin Knots",
+        "subtitle": "",
+        "nodes": 5672,
+        "count": 5672,
+        "color": "#28a745",
+        "percent": 22.54,
+        "percentage": "22.54"
+      },
+      {
+        "id": "libre_all",
+        "label": "Libre Relay",
+        "name": "Libre Relay",
+        "subtitle": "",
+        "nodes": 35,
+        "count": 35,
+        "color": "#757575",
+        "percent": 0.14,
+        "percentage": "0.14"
+      },
+      {
+        "id": "bcoin_all",
+        "label": "bcoin",
+        "name": "bcoin",
+        "subtitle": "",
+        "nodes": 1,
+        "count": 1,
+        "color": "#90a4ae",
+        "percent": 0,
+        "percentage": "0.00"
+      },
+      {
+        "id": "btcd_all",
+        "label": "btcd",
+        "name": "btcd",
+        "subtitle": "",
+        "nodes": 21,
+        "count": 21,
+        "color": "#78909c",
+        "percent": 0.08,
+        "percentage": "0.08"
+      },
+      {
+        "id": "unlimited_all",
+        "label": "Bitcoin Unlimited",
+        "name": "Bitcoin Unlimited",
+        "subtitle": "",
+        "nodes": 2,
+        "count": 2,
+        "color": "#607d8b",
+        "percent": 0.01,
+        "percentage": "0.01"
+      },
+      {
+        "id": "bitcore_all",
+        "label": "Bitcore",
+        "name": "Bitcore",
+        "subtitle": "",
+        "nodes": 9,
+        "count": 9,
+        "color": "#9e9e9e",
+        "percent": 0.04,
+        "percentage": "0.04"
+      },
+      {
+        "id": "uasf_all",
+        "label": "Bitcoin UASF",
+        "name": "Bitcoin UASF",
+        "subtitle": "",
+        "nodes": 3,
+        "count": 3,
+        "color": "#8d6e63",
+        "percent": 0.01,
+        "percentage": "0.01"
+      },
+      {
+        "id": "statoshi_all",
+        "label": "Statoshi",
+        "name": "Statoshi",
+        "subtitle": "",
+        "nodes": 2,
+        "count": 2,
+        "color": "#a1887f",
+        "percent": 0.01,
+        "percentage": "0.01"
+      },
+      {
+        "id": "other_all",
+        "label": "Other",
+        "name": "Other",
+        "subtitle": "",
+        "nodes": 34,
+        "count": 34,
+        "color": "#cfd8dc",
+        "percent": 0.14,
+        "percentage": "0.14"
+      }
+    ]
+  },
+  "top_clients": [
+    {
+      "rank": 1,
+      "name": "Satoshi:31.0.0",
+      "nodes": 3914,
+      "percent": 15.56
+    },
+    {
+      "rank": 2,
+      "name": "Satoshi:29.3.0/Knots:20260508",
+      "nodes": 2773,
+      "percent": 11.02
+    },
+    {
+      "rank": 3,
+      "name": "Satoshi:29.3.0",
+      "nodes": 1645,
+      "percent": 6.54
+    },
+    {
+      "rank": 4,
+      "name": "Satoshi:30.2.0",
+      "nodes": 1615,
+      "percent": 6.42
+    },
+    {
+      "rank": 5,
+      "name": "Satoshi:27.0.0",
+      "nodes": 1497,
+      "percent": 5.95
+    },
+    {
+      "rank": 6,
+      "name": "Satoshi:28.1.0",
+      "nodes": 1410,
+      "percent": 5.6
+    },
+    {
+      "rank": 7,
+      "name": "Satoshi:29.2.0",
+      "nodes": 1132,
+      "percent": 4.5
+    },
+    {
+      "rank": 8,
+      "name": "Satoshi:26.0.0",
+      "nodes": 1063,
+      "percent": 4.22
+    },
+    {
+      "rank": 9,
+      "name": "Satoshi:30.0.0",
+      "nodes": 1047,
+      "percent": 4.16
+    },
+    {
+      "rank": 10,
+      "name": "Satoshi:29.0.0",
+      "nodes": 1029,
+      "percent": 4.09
+    }
+  ]
+}

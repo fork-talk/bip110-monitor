@@ -6,7 +6,8 @@
   "scripts": {
     "monitor": "node cli.mjs",
     "nodes": "node cli.mjs --nodes-only",
-    "blocks": "node cli.mjs --blocks-only"
+    "blocks": "node cli.mjs --blocks-only",
+    "snapshot": "node update-snapshot.mjs"
   },
   "license": "MIT"
 }

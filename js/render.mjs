@@ -156,6 +156,20 @@ export function renderError(sectionId, msg) {
   }
 }
 
+export function renderSnapshotNotice(sectionId, snapshotTs) {
+  const el = $(sectionId);
+  if (!el) return;
+  const note = document.createElement('p');
+  note.className = 'snapshot-notice';
+  const dateStr = snapshotTs
+    ? new Date(snapshotTs * 1000).toLocaleString()
+    : 'unknown';
+  note.textContent = snapshotTs
+    ? `Using cached snapshot from ${dateStr} (live API blocked by CORS)`
+    : 'Using cached snapshot (live API unavailable)';
+  el.appendChild(note);
+}
+
 export function renderLastUpdated() {
   $('last-updated').textContent = `Last updated: ${new Date().toLocaleString()}`;
 }

@@ -213,6 +213,16 @@ td:nth-child(2), td:nth-child(3), th:nth-child(2), th:nth-child(3) {
   font-size: 0.9em;
 }
 
+.snapshot-notice {
+  font-size: 0.8em;
+  color: var(--text-muted);
+  background: #fff8e1;
+  border: 1px solid #ffe082;
+  border-radius: 4px;
+  padding: 6px 10px;
+  margin-top: 8px;
+}
+
 footer {
   text-align: center;
   padding: 20px 0;
