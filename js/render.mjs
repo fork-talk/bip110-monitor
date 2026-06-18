@@ -63,28 +63,62 @@ export function renderOpReturnBar(data) {
   $('opreturn-new').textContent = `${formatNum(data.opReturn.new.nodes)} new 100KB (${formatPct(data.opReturn.new.percent)})`;
 }
 
-export function renderBlocks(blocks) {
-  const grid = $('block-grid');
-  const BIT4 = 1 << 4;
+export function renderSignaling(data) {
+  const container = $('signaling-current');
+  const pct = data.pct || 0;
+  const total = data.totalBlocks || 0;
+  const signaling = data.signalingCount || 0;
+  const remaining = data.periodEnd - data.tip;
 
-  let signaling = 0;
-  const total = blocks.length;
-
-  const els = blocks.map(b => {
-    const signals = (b.version & BIT4) !== 0;
-    if (signals) signaling++;
-    const cls = signals ? 'signal' : 'no-signal';
-    return `<span class="block ${cls}" title="#${b.height} - ${signals ? 'SIGNALING' : 'no signal'} (0x${b.version.toString(16)})"></span>`;
-  });
-
-  grid.innerHTML = els.join('');
-
-  const stats = $('block-stats');
-  const pct = total > 0 ? (signaling / total * 100).toFixed(2) : '0';
-  stats.innerHTML = `
-    <strong>${signaling}/${total}</strong> blocks signaling bit 4 (${pct}%) in the last ${total} blocks.
-    Threshold: 1,109/2,016 (55%).
+  container.innerHTML = `
+    <div class="grid">
+      <div class="stat-box">
+        <span class="stat-label">Period ${data.periodNum}</span>
+        <span class="stat-value accent">${signaling} / ${formatNum(total)}</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-label">Signal Rate</span>
+        <span class="stat-value accent">${formatPct(pct)}</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-label">Blocks Left</span>
+        <span class="stat-value">${formatNum(remaining)}</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-label">Tip</span>
+        <span class="stat-value">${formatNum(data.tip)}</span>
+      </div>
+    </div>
   `;
+
+  const tbody = $('period-body');
+  const periods = (data.periods || []).slice().reverse();
+  const totalSignaling = periods.reduce((s, p) => s + p.signalingCount, 0) + signaling;
+
+  tbody.innerHTML = [
+    `<tr class="current-period">
+      <td>${data.periodNum} (current)</td>
+      <td>${signaling}</td>
+      <td>${formatNum(total)}</td>
+      <td>${formatPct(pct)}</td>
+      <td class="bar-cell">
+        <div class="mini-bar"><div class="mini-bar-fill signal-bar" style="width: ${Math.max(pct / 55 * 100, pct > 0 ? 2 : 0).toFixed(1)}%"></div></div>
+      </td>
+    </tr>`,
+    ...periods.map(p => `
+      <tr>
+        <td>${p.periodNum}</td>
+        <td>${p.signalingCount}</td>
+        <td>${formatNum(p.totalBlocks)}</td>
+        <td>${formatPct(p.pct)}</td>
+        <td class="bar-cell">
+          <div class="mini-bar"><div class="mini-bar-fill signal-bar" style="width: ${Math.max(p.pct / 55 * 100, p.signalingCount > 0 ? 2 : 0).toFixed(1)}%"></div></div>
+        </td>
+      </tr>
+    `),
+  ].join('');
+
+  $('signaling-total').textContent = `Total signaling blocks across all tracked periods: ${totalSignaling}. Threshold for activation: 1,109 / 2,016 (55%) in any single period.`;
 }
 
 export function renderTimeline(timeline, currentHeight) {
@@ -105,31 +139,32 @@ export function renderTimeline(timeline, currentHeight) {
   $('timeline-note').textContent = `Estimates based on current height ${formatNum(currentHeight)} and 10-minute average block time.`;
 }
 
-export function renderRetarget(info, signalingInPeriod) {
+export function renderRetarget(data) {
   const el = $('retarget-info');
   el.classList.remove('loading');
 
-  const pct = info.blocksInPeriod > 0
-    ? (signalingInPeriod / info.blocksInPeriod * 100).toFixed(2)
-    : '0';
-
-  const needed = Math.max(0, info.threshold - signalingInPeriod);
-  const possible = signalingInPeriod + info.blocksRemaining;
-  const canReach = possible >= info.threshold;
+  const signaling = data.signalingCount || 0;
+  const total = data.totalBlocks || 0;
+  const remaining = data.periodEnd - data.tip;
+  const threshold = 1109;
+  const needed = Math.max(0, threshold - signaling);
+  const possible = signaling + remaining;
+  const canReach = possible >= threshold;
+  const pct = total > 0 ? (signaling / total * 100).toFixed(2) : '0';
 
   el.innerHTML = `
     <div class="grid" style="margin-bottom: 12px">
       <div class="stat-box">
         <span class="stat-label">Period</span>
-        <span class="stat-value">${formatNum(info.periodStart)} - ${formatNum(info.periodEnd)}</span>
+        <span class="stat-value">${formatNum(data.periodStart)} - ${formatNum(data.periodEnd)}</span>
       </div>
       <div class="stat-box">
         <span class="stat-label">Progress</span>
-        <span class="stat-value">${formatNum(info.blocksInPeriod)} / 2,016</span>
+        <span class="stat-value">${formatNum(total)} / 2,016</span>
       </div>
       <div class="stat-box">
         <span class="stat-label">Signaling</span>
-        <span class="stat-value accent">${formatNum(signalingInPeriod)} (${pct}%)</span>
+        <span class="stat-value accent">${formatNum(signaling)} (${pct}%)</span>
       </div>
       <div class="stat-box">
         <span class="stat-label">Still Needed</span>
@@ -138,10 +173,10 @@ export function renderRetarget(info, signalingInPeriod) {
     </div>
     <p class="note">
       ${canReach
-        ? `Threshold of ${info.threshold} (${info.thresholdPct}%) is still reachable this period.`
-        : `Threshold of ${info.threshold} (${info.thresholdPct}%) is no longer reachable this period.`
+        ? `Threshold of ${formatNum(threshold)} (55%) is still reachable this period.`
+        : `Threshold of ${formatNum(threshold)} (55%) is no longer reachable this period.`
       }
-      ${info.blocksRemaining} blocks remaining.
+      ${formatNum(remaining)} blocks remaining.
     </p>
   `;
 }

@@ -1,0 +1,79 @@
+{
+    "bip": "110",
+    "tip": 954221,
+    "chainTip": 954221,
+    "periodNum": 473,
+    "periodStart": 953568,
+    "periodEnd": 955583,
+    "totalBlocks": 654,
+    "signalingCount": 1,
+    "pct": 0.15,
+    "synced": true,
+    "updatedAt": "2026-06-18T09:27:58.095Z",
+    "periods": [
+        {
+            "periodNum": 465,
+            "startBlock": 937440,
+            "endBlock": 939455,
+            "signalingCount": 1,
+            "totalBlocks": 2016,
+            "pct": 0.05
+        },
+        {
+            "periodNum": 466,
+            "startBlock": 939456,
+            "endBlock": 941471,
+            "signalingCount": 0,
+            "totalBlocks": 2016,
+            "pct": 0
+        },
+        {
+            "periodNum": 467,
+            "startBlock": 941472,
+            "endBlock": 943487,
+            "signalingCount": 3,
+            "totalBlocks": 2016,
+            "pct": 0.15
+        },
+        {
+            "periodNum": 468,
+            "startBlock": 943488,
+            "endBlock": 945503,
+            "signalingCount": 2,
+            "totalBlocks": 2016,
+            "pct": 0.1
+        },
+        {
+            "periodNum": 469,
+            "startBlock": 945504,
+            "endBlock": 947519,
+            "signalingCount": 0,
+            "totalBlocks": 2016,
+            "pct": 0
+        },
+        {
+            "periodNum": 470,
+            "startBlock": 947520,
+            "endBlock": 949535,
+            "signalingCount": 0,
+            "totalBlocks": 2016,
+            "pct": 0
+        },
+        {
+            "periodNum": 471,
+            "startBlock": 949536,
+            "endBlock": 951551,
+            "signalingCount": 7,
+            "totalBlocks": 2016,
+            "pct": 0.35
+        },
+        {
+            "periodNum": 472,
+            "startBlock": 951552,
+            "endBlock": 953567,
+            "signalingCount": 16,
+            "totalBlocks": 2016,
+            "pct": 0.79
+        }
+    ]
+}

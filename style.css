@@ -135,6 +135,20 @@ td:nth-child(2), td:nth-child(3), th:nth-child(2), th:nth-child(3) {
   transition: width 0.5s ease;
 }
 
+.mini-bar-fill.signal-bar {
+  background: var(--accent);
+}
+
+.current-period td {
+  font-weight: 600;
+}
+
+#signaling-section h3 {
+  font-size: 0.95em;
+  margin: 16px 0 8px;
+  color: var(--text-muted);
+}
+
 .bar-container {
   background: var(--bar-bg);
   border-radius: 6px;

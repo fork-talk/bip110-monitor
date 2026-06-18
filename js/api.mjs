@@ -1,9 +1,8 @@
 const BTCNODES_SUMMARY = 'https://btcnodes.io/api/summary';
-const MEMPOOL_BLOCKS = 'https://mempool.space/api/blocks';
-const MEMPOOL_TIP = 'https://mempool.space/api/blocks/tip/height';
+const BIP110_MONITOR = 'https://bip110monitor.com/api';
 
 const SNAPSHOT_NODES = './data/nodes.json';
-const SNAPSHOT_BLOCKS = './data/blocks.json';
+const SNAPSHOT_SIGNALING = './data/signaling.json';
 
 async function fetchJSON(url) {
   const res = await fetch(url);
@@ -47,32 +46,12 @@ export async function fetchNodeSummary() {
   }
 }
 
-export async function fetchBlocks(startHeight) {
-  const url = startHeight
-    ? `${MEMPOOL_BLOCKS}/${startHeight}`
-    : MEMPOOL_BLOCKS;
-  return fetchJSON(url);
-}
-
-export async function fetchTipHeight() {
-  return fetchJSON(MEMPOOL_TIP);
-}
-
-export async function fetchBlockRange(count = 150) {
+export async function fetchSignaling() {
   try {
-    const blocks = [];
-    let height = null;
-
-    while (blocks.length < count) {
-      const batch = await fetchBlocks(height);
-      if (!batch.length) break;
-      blocks.push(...batch);
-      height = batch[batch.length - 1].height - 1;
-    }
-
-    return { blocks: blocks.slice(0, count), fromSnapshot: false };
+    const data = await fetchJSON(BIP110_MONITOR);
+    return { data, fromSnapshot: false };
   } catch {
-    const blocks = await fetchJSON(SNAPSHOT_BLOCKS);
-    return { blocks, fromSnapshot: true };
+    const data = await fetchJSON(SNAPSHOT_SIGNALING);
+    return { data, fromSnapshot: true };
   }
 }

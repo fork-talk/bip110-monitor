@@ -3,7 +3,7 @@
 import { writeFileSync } from 'node:fs';
 
 const BTCNODES_SUMMARY = 'https://btcnodes.io/api/summary';
-const MEMPOOL_BLOCKS = 'https://mempool.space/api/blocks';
+const BIP110_MONITOR = 'https://bip110monitor.com/api';
 
 async function fetchJSON(url) {
   const res = await fetch(url);
@@ -24,10 +24,10 @@ const trimmed = {
 writeFileSync(dir + 'nodes.json', JSON.stringify(trimmed, null, 2) + '\n');
 console.log(`  nodes.json: ${trimmed.total_nodes.toLocaleString()} nodes, snapshot ${new Date(trimmed.snapshot * 1000).toISOString()}`);
 
-console.log('Fetching blocks from mempool.space...');
-const blocks = await fetchJSON(MEMPOOL_BLOCKS);
-const slim = blocks.map(b => ({ height: b.height, version: b.version, timestamp: b.timestamp }));
-writeFileSync(dir + 'blocks.json', JSON.stringify(slim, null, 2) + '\n');
-console.log(`  blocks.json: ${slim.length} blocks, tip ${slim[0].height.toLocaleString()}`);
+console.log('Fetching signaling data from bip110monitor.com...');
+const signaling = await fetchJSON(BIP110_MONITOR);
+writeFileSync(dir + 'signaling.json', JSON.stringify(signaling, null, 2) + '\n');
+const totalSig = (signaling.periods || []).reduce((s, p) => s + p.signalingCount, 0) + signaling.signalingCount;
+console.log(`  signaling.json: period ${signaling.periodNum}, ${signaling.signalingCount}/${signaling.totalBlocks} this period, ${totalSig} total`);
 
 console.log('Done.');
