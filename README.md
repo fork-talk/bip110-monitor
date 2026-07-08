@@ -16,7 +16,7 @@ Live dashboard tracking BIP-110 node adoption and block signaling across the Bit
 ## Data sources
 
 - [btcnodes.io](https://btcnodes.io) - Node crawler with BIP-110 tracking
-- [mempool.space](https://mempool.space) - Block explorer API for version bits
+- [bip110monitor.com](https://bip110monitor.com) - Block signaling stats per difficulty period
 
 ## CLI usage
 
